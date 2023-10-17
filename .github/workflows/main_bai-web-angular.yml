@@ -2,6 +2,7 @@
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 #          npm run test --if-present
 
+
 name: Build and deploy Node.js app to Azure Web App - bai-web-angular
 
 on:
