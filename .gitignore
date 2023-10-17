@@ -1,6 +1,3 @@
 node_modules
 .angular
 dist
-
-# But include
-.github/workflows/main_bai-web-angular.yml
