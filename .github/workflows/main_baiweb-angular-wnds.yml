@@ -53,7 +53,7 @@ jobs:
 
       - name: 'UnZip artifact'
         run: |
-          Expand-Archive -Path ${{ github.workspace }}/release.zip -DestinationPath ${{ github.workspace }}
+         pwsh -Command "Expand-Archive -Path ${{ github.workspace }}/release.zip -DestinationPath ${{ github.workspace }}"
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
