@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = 'https://y79qg.wiremockapi.cloud/contact/message';
+  private apiUrl = 'https://4wmmm.wiremockapi.cloud/contact/message';
 
   constructor(private http: HttpClient) { }
 

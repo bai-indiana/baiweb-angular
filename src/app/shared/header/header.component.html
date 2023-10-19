@@ -1,20 +1,40 @@
-<!-- <nav>
-    <ul>
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/events">Events</a></li>
-      <li><a routerLink="/about">About</a>
-        <ul>
-          <li><a routerLink="/about/executive-committee">Executive Committee</a></li>
-          <li><a routerLink="/about/by-laws">BY-LAWS</a></li>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+   <div class="container-fluid">
+    <a class="navbar-brand" href="#">BAI</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" routerLink="/events">Events</a>
+        </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About
+          </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/about/executive-committee">Executive Committee</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" routerLink="/about/by-laws">BY-LAWS</a></li>
         </ul>
       </li>
-      <li><a routerLink="/member">Member</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/member">Member</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact</a>
+      </li>
     </ul>
-  </nav> -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    </div>
+    </div>
+  </nav>
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar w/ text</a>
+      <a class="navbar-brand" href="#">BAI</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,7 +55,7 @@
         </span>
       </div>
     </div>
-  </nav>
+  </nav> -->
 
 <!-- 
   <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
