@@ -3,6 +3,6 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/3bf09190-7f3e-4a24-ab85-39eb84fe20d9/resourceGroups/bai-website/providers/Microsoft.Web/sites/baiweb-angular-lx",
+    "appService.defaultWebAppToDeploy": "/subscriptions/3bf09190-7f3e-4a24-ab85-39eb84fe20d9/resourceGroups/bai-website/providers/Microsoft.Web/sites/baiweb-angular-l",
     "appService.deploySubpath": "dist"
 }
