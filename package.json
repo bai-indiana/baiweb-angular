@@ -1,6 +1,12 @@
 {
   "name": "baiweb-angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "author": "Sudip Biswas",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bai-indiana/baiweb-angular.git"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
