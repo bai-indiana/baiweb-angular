@@ -22,10 +22,14 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent,
-    children: [
-      { path: 'executive-committee', component: ExecutiveCommitteeComponent },
-      { path: 'by-laws', component: ByLawsComponent },
-    ],
+  },
+  {
+    path: 'executive-committee',
+    component: ExecutiveCommitteeComponent,
+  },
+  {
+    path: 'by-laws',
+    component: ByLawsComponent,
   },
   {
     path: 'member',
