@@ -1,7 +1,0 @@
-/* Define a CSS class for the Home component */
-.home-background {
-    background-image: url('/assets/img/bai-bg-01.jpg');
-    background-size: cover; /* Adjust background size as needed */
-    background-position: center; /* Adjust background position as needed */
-    /* Additional styles as needed for your Home page */
-  }

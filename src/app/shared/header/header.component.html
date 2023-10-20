@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!-- <nav class="navbar bg-dark navbar-expand-lg " data-bs-theme="dark">
    <div class="container-fluid">
-    <a class="navbar-brand" href="#">BAI</a>
+    <a class="navbar-brand" routerLink="/home">
+      <img src="/assets/img/BAI-Logo-removebg-preview.png" alt="BAI" width="60" height="48">
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,49 +31,29 @@
         <a class="nav-link" routerLink="/contact">Contact</a>
       </li>
     </ul>
+    <span class="navbar-text">
+      <a class="navbar-brand" routerLink="/announcements">
+        <img src="/assets/img/announcements-icon.png" alt="announcements" width="60" height="48">
+      </a>
+    </span>
     </div>
     </div>
   </nav>
-  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">BAI</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-          Navbar text with an inline element
-        </span>
-      </div>
-    </div>
-  </nav> -->
+   -->
 
-<!-- 
-  <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+   <nav class="fixed w-full" id="tm-nav">
     <div class="tm-container mx-auto px-2 md:py-6 text-right">
         <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
         <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/home">Home</a></li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/events">Events</a>
+            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#home">Home</a></li>
+            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#events">Events</a>
             </li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/about">About</a>
+            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#about">About</a>
             </li>                
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/member">Member</a>
+            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#member">Member</a>
             </li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/contact">Contact</a>
+            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#contact">Contact</a>
             </li>
         </ul>
     </div>
-</nav> -->
- 
+</nav>

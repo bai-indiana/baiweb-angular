@@ -1,17 +1,153 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>BaiwebAngular</title>
+  <title>Bengali Association of Indiana</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&family=Oswald:wght@600&display=swap"
+    rel="stylesheet">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
-  rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <link href="/assets/css/all.min.css" rel="stylesheet"> <!-- fontawesome -->
+  <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
+  <link href="/assets/css/tailwind.css" rel="stylesheet">
+  <link href="/assets/css/bai.css" rel="stylesheet">
+
+  <script src="/assets/js/jquery-3.6.0.min.js"></script>
+  <script src="/assets/js/parallax.min.js"></script>
+  <script src="/assets/js/jquery.singlePageNav.min.js"></script>
 </head>
+
 <body>
   <app-root></app-root>
+<!--    
+  <script>
+    function validateAndSubmitContactUsForm() {
+      var name = document.getElementById("name").value;
+      var emailId = document.getElementById("emailId").value;
+      var message = document.getElementById("message").value;
+      var errorMessage = document.getElementById("error-message");
+
+      errorMessage.innerHTML = ""; // Clear previous error message
+
+      if (name === "" || emailId === "" || message === "") {
+        errorMessage.innerHTML = "Please fill in all fields.";
+        return;
+      }
+
+      // Regular expression for basic email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailId)) {
+        errorMessage.innerHTML = "Please enter a valid email address.";
+        document.getElementById("emailId").focus();
+        return;
+      }
+
+      // If all validations pass, you can submit the form
+      submitContactUs();
+    }
+  </script>
+  <script>
+    function submitContactUs() {
+
+      // Get the form element
+      const form = document.getElementById("contactForm");
+      // Create a FormData object to collect the form data
+      const formData = new FormData(form);
+      var params = '';
+
+      // Iterate over the FormData entries
+      for (const [name, value] of formData.entries()) {
+        params += `${encodeURIComponent(name)}=${encodeURIComponent(value)}&`;
+      }
+
+      // Remove the trailing '&' character
+      if (params.length > 0) {
+        params = params.slice(0, -1);
+      }
+
+      const resultDiv = document.getElementById("result");
+
+
+      var http = new XMLHttpRequest();
+      var url = 'https://baiweb-backend.azurewebsites.net/contact/message?' + params;
+
+      http.open('POST', url, true);
+
+      resultDiv.innerHTML = 'Sending....';
+      //Send the proper header information along with the request
+      http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+      http.onreadystatechange = function () {
+        //Call a function when the state changes.
+        if (http.readyState == 4 && http.status == 200) {
+          resultDiv.innerHTML = 'Successfully Sent';
+          window.alert("Success");
+        }
+      }
+      http.send();
+      resultDiv.innerHTML = 'We will respond to you shortly.</br> If you do not hear from us within 72 hours,</br> please send an email to ec@baiweb.org.';
+    }
+
+  </script> -->
+  <script>
+
+    function checkAndShowHideMenu() {
+      if (window.innerWidth < 768) {
+        $('#tm-nav ul').addClass('hidden');
+      } else {
+        $('#tm-nav ul').removeClass('hidden');
+      }
+    }
+
+    $(function () {
+      var tmNav = $('#tm-nav');
+      tmNav.singlePageNav();
+
+      checkAndShowHideMenu();
+      window.addEventListener('resize', checkAndShowHideMenu);
+
+      $('#menu-toggle').click(function () {
+        $('#tm-nav ul').toggleClass('hidden');
+      });
+
+      $('#tm-nav ul li').click(function () {
+        if (window.innerWidth < 768) {
+          $('#tm-nav ul').addClass('hidden');
+        }
+      });
+
+      $(document).scroll(function () {
+        var distanceFromTop = $(document).scrollTop();
+
+        if (distanceFromTop > 100) {
+          tmNav.addClass('scroll');
+        } else {
+          tmNav.removeClass('scroll');
+        }
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+
+  </script>
 </body>
+
 </html>

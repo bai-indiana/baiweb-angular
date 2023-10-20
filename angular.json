@@ -23,12 +23,16 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/assets/img"
+              "src/assets/img",
+              "src/assets/css",
+              "src/assets/js"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+
+            ]
           },
           "configurations": {
             "production": {

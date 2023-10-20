@@ -14,10 +14,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children: [
-      { path: '', redirectTo: 'announcements', pathMatch: 'full' },
-      { path: 'announcements', component: AnnouncementsComponent },
-    ],
   },
   {
     path: 'events',
@@ -27,7 +23,6 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
     children: [
-      { path: '', redirectTo: 'executive-committee', pathMatch: 'full' },
       { path: 'executive-committee', component: ExecutiveCommitteeComponent },
       { path: 'by-laws', component: ByLawsComponent },
     ],
@@ -39,6 +34,10 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
+  },
+  {
+    path: 'announcements',
+    component: AnnouncementsComponent,
   },
 ];
 
