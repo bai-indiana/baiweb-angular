@@ -7,9 +7,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class ContactService {
   // stage url
-  // private apiUrl = 'https://bai-backend-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io//contact/message';
+  private apiUrl = 'https://bai-backend-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io//contact/message';
   //prod url
-  private apiUrl = 'https://bai-backend-service.whiteriver-6da5cceb.eastus.azurecontainerapps.io/contact/message';
+  // private apiUrl = 'https://bai-backend-service.whiteriver-6da5cceb.eastus.azurecontainerapps.io/contact/message';
   // host url
   // private apiUrl = 'http://localhost:8080/contact/message';
 
