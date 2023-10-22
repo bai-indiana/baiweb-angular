@@ -46,7 +46,12 @@ export class ContactComponent {
       this.contactService.submitContactForm(this.contact.name, this.contact.emailId, this.contact.message)
         .subscribe((response) => {
           this.apiResponse = response.toString();
-        });
+        },
+        (error) => {
+          // Handle the error response here
+          this.apiResponse = 'An error occurred. Please try again later. Or send an email to ec@baiweb.org';
+        }
+        );
     }
   }
 }

@@ -32,30 +32,21 @@ Design  </br>
 
 -Menu  https://getbootstrap.com/docs/5.3/components/navbar/ </br>
 
+1. Code Deployment - **Only deploy dist directory**
+    1. Ref video -  https://www.youtube.com/watch?v=YMw5YmZRiI0 </br>
+    2. Install 'Azure App Service' plugin 
+    3. press ctrl+shift+P
+    4. This will open a text box on top
+    5. Then type sign in / Sign out (if you already sign out and sign in)
+    6. Login using bai.indiana@outlook.com
+    7. Open 'Azure App Service' plugin
+    8. Select subscription
+    10. Deploy using above video
+    11. **Add SCM_DO_BUILD_DURING_DEPLOYMENT=false for first time only
+    12. ref - https://medium.com/@theartemkovtun/azure-web-app-angular-couldnt-detect-a-version-for-the-platform-nodejs-in-the-repo-3d93892a514e 
+    13. Go-to - https://baiweb-angular-l.azurewebsites.net/home to see the change
 
-</br>
-Code Deployment - </br> 
-Ref video -  https://www.youtube.com/watch?v=YMw5YmZRiI0 </br>
-        Install 'Azure App Service' plugin </br>
-        press ctrl+shift+P</br>
-        This will open a text box on top </br>
-        Then type sign in / Sign out (if you already sign out and sign in)</br>
-        Login using bai.indiana@outlook.com</br>
-        Open 'Azure App Service' plugin</br>
-        Select subscription</br>
-        Deploy using above video</br>
-        **Add SCM_DO_BUILD_DURING_DEPLOYMENT=false for first time only ref - https://medium.com/@theartemkovtun/azure-web-app-angular-couldnt-detect-a-version-for-the-platform-nodejs-in-the-repo-3d93892a514e </br>
-        
-        Go-to - https://baiweb-angular-l.azurewebsites.net/home to see the change
-         
-
-
-
-
-
-
-
-
+ 
 
 ## Build
 

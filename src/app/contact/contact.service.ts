@@ -6,7 +6,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ContactService {
-  private apiUrl = 'https://baiweb-backend.azurewebsites.net/contact/message';
+  // stage url
+  // private apiUrl = 'https://bai-backend-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io//contact/message';
+  //prod url
+  private apiUrl = 'https://bai-backend-service.whiteriver-6da5cceb.eastus.azurecontainerapps.io/contact/message';
+  // host url
+  // private apiUrl = 'http://localhost:8080/contact/message';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +21,6 @@ export class ContactService {
       .set('emailId', email)
       .set('message', message);
 
-    return this.http.post(this.apiUrl, null, { params,responseType: "text" } );
+    return this.http.post(this.apiUrl, null, { params, responseType: "text" });
   }
 }
