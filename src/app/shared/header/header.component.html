@@ -1,59 +1,42 @@
-<!-- <nav class="navbar bg-dark navbar-expand-lg " data-bs-theme="dark">
-   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/home">
-      <img src="/assets/img/BAI-Logo-removebg-preview.png" alt="BAI" width="60" height="48">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/events">Events</a>
-        </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" routerLink="/about" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About
-          </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" routerLink="/about/executive-committee">Executive Committee</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" routerLink="/about/by-laws">BY-LAWS</a></li>
-        </ul>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/member">Member</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/contact">Contact</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      <a class="navbar-brand" routerLink="/announcements">
-        <img src="/assets/img/announcements-icon.png" alt="announcements" width="60" height="48">
-      </a>
-    </span>
-    </div>
-    </div>
-  </nav>
-   -->
-
-   <nav class="fixed w-full" id="tm-nav">
-    <div class="tm-container mx-auto px-2 md:py-6 text-right">
-        <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
-        <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#home">Home</a></li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#events">Events</a>
-            </li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#about">About</a>
-            </li>                
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#member">Member</a>
-            </li>
-            <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#contact">Contact</a>
-            </li>
-        </ul>
-    </div>
+<nav class="fixed w-full" id="tm-nav" *ngIf="isLoggedIn; else notLoggedInMenu"  >
+  <div class="tm-container mx-auto px-2 md:py-6 text-right">
+      <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
+      <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#home">Profile1</a></li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#events">Profile2</a>
+          </li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">About</a>
+          </li>                
+          <li *ngIf="admin"  class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#member">Admin</a>
+            <ul class="submenu">
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  (click)="showLoginPage()">Admin1</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Admin2</a></li>
+            </ul>
+          </li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#contact">Logout</a>
+          </li>
+      </ul>
+  </div>
 </nav>
+<ng-template #notLoggedInMenu>
+<nav class="fixed w-full" id="tm-nav" >
+  <div class="tm-container mx-auto px-2 md:py-6 text-right">
+      <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
+      <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#home">Home</a></li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#events">Events</a>
+          </li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">About</a>
+          </li>                
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#member">Member</a>
+            <ul class="submenu">
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  (click)="showLoginPage()">Log-in</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Register</a></li>
+            </ul>
+          </li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#contact">Contact</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+</ng-template>

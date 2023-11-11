@@ -1,1 +1,14 @@
- 
+/* Initially hide the submenu */
+.submenu {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s ease-out;
+}
+
+/* Show the submenu with a scrolling effect when the parent item is hovered */
+li:hover .submenu {
+    display: block;
+    max-height: 500px; /* Adjust the max height as needed */
+    transition: max-height 1s ease-in;
+}

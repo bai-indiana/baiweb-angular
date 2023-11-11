@@ -1,0 +1,19 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:url('/assets/img/loading.svg');
+    background-repeat: no-repeat;
+    background-position: center center; /* Center the background image both horizontally and vertically */
+    background-size: 60px 60px; /* Set the width and height as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999; /* ensures it's above other content */
+  }
+
+  
+  

@@ -7,6 +7,9 @@ import { ByLawsComponent } from './by-laws/by-laws.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExecutiveCommitteeComponent } from './executive-committee/executive-committee.component';
 import { MemberComponent } from './member/member.component';
+import { RegistrationComponent } from './member/registration/registration.component';
+import { LoginComponent } from './member/login/login.component';
+import { ProfileComponent } from './member/profile/profile.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
 
 const routes: Routes = [
@@ -34,6 +37,18 @@ const routes: Routes = [
   {
     path: 'member',
     component: MemberComponent,
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
     path: 'contact',

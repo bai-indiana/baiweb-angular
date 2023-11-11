@@ -1,26 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { BASE_URL } from '../constants';
+import { CommonService } from '../shared/common.service';
+import { Client } from '../shared/client.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContactService {
-  // stage url
-  private apiUrl = 'https://bai-backend-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io//contact/message';
-  //prod url
-  // private apiUrl = 'https://bai-backend-service.whiteriver-6da5cceb.eastus.azurecontainerapps.io/contact/message';
-  // host url
-  // private apiUrl = 'http://localhost:8080/contact/message';
+export class ContactService    {
+  private contactApiUrl = BASE_URL + '/contact/message';
 
   constructor(private http: HttpClient) { }
 
-  submitContactForm(name: string, email: string, message: string) {
+
+
+  submitContactForm(client : Client, name: string, email: string, phone: string, message: string) {
     const params = new HttpParams()
       .set('name', name)
       .set('emailId', email)
+      .set('phone', phone)
       .set('message', message);
-
-    return this.http.post(this.apiUrl, null, { params, responseType: "text" });
+      alert(JSON.stringify(client));
+    return this.http.post(this.contactApiUrl, client, { params, responseType: "text" });
   }
 }

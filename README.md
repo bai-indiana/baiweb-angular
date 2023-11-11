@@ -28,6 +28,9 @@ Create a shared header and footer component. </br>
 Create contact page form service  </br>
     ng generate service contact/contact </br>
 
+Crerate model </br>
+    ng generate class shared/client --type=model    
+
 Design  </br>
 
 -Menu  https://getbootstrap.com/docs/5.3/components/navbar/ </br>

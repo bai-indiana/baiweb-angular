@@ -16,6 +16,32 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { ContactService } from './contact/contact.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './member/registration/registration.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+import { CommonService } from './shared/common.service';
+import { RegistrationService } from './member/registration/registration.service';
+import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
+import { CustomDateAdapter } from './shared/customDateAdapter ';
+import { LoginComponent } from './member/login/login.component';
+import { ProfileComponent } from './member/profile/profile.component';
+import { AlertComponent } from './shared/alert/alert.component';
+
 
 @NgModule({
   declarations: [
@@ -29,15 +55,50 @@ import { FormsModule } from '@angular/forms';
     ExecutiveCommitteeComponent,
     ByLawsComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RegistrationComponent,
+    LoginComponent,
+    ProfileComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSnackBarModule,
+    MatCardModule
   ],
-  providers: [ContactService],
+  providers: [
+    ContactService,
+    CommonService,
+    RegistrationService,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue: {}
+    },
+    { provide: DateAdapter, useClass: CustomDateAdapter },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

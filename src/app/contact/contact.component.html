@@ -21,62 +21,65 @@
 </div> -->
 <div class="parallax-window relative" data-image-src="/assets/img/bai-bg-04.jpg" data-parallax="scroll" id="contact">
   <div class="container mx-auto tm-container pt-24 pb-48 sm:py-48">
-      <div class="flex flex-col lg:flex-row justify-around items-center lg:items-stretch">
-          <div class="flex-1 rounded-xl px-10 py-12 m-5 bg-white-sexy bg-opacity-80 tm-item-container">
-              <h2 class="text-3xl mb-6 tm-text-green">Contact Us</h2>
-              <div class="flex items-start mb-6 tm-menu-item">
-                  <img alt="e-mail" class="rounded-md" src="/assets/img/email-icon.png">
-                  <div class="ml-3 sm:ml-6">
-                      <h3 rel="nofollow">ec@baiweb.org</h3>
-                  </div>
-              </div>
-              <div class="flex items-start mb-6 tm-menu-item">
-                  <img alt="facebook" class="rounded-md" src="/assets/img/fb-icon.png">
-                  <div class="ml-3 sm:ml-6">
-                      <a rel="nofollow" target="_blank"
-                      href="https://www.facebook.com/bai.indiana">https://www.facebook.com/bai.indiana</a>
-                  </div>
-              </div>
-              <div class="flex items-start mb-6 tm-menu-item">
-                  <img alt="instagram" class="rounded-md" src="/assets/img/insta-icon.png">
-                  <div class="ml-3 sm:ml-6">
-                      <a rel="nofollow" target="_blank"
-                          href="https://www.instagram.com/bai.indiana">https://www.instagram.com/bai.indiana</a>
-                  </div>
-              </div>
-              <div class="flex items-start mb-6 tm-menu-item">
-                  <img alt="whatsapp" class="rounded-md" src="/assets/img/wa-icon.png">
-                  <div class="ml-3 sm:ml-6">
-                      <img alt="whatsapp" class="rounded-md" src="/assets/img/qr-wa.png">
-                  </div>
-              </div>
-
+    <div class="flex flex-col lg:flex-row justify-around items-center lg:items-stretch">
+      <div class="flex-1 rounded-xl px-10 py-12 m-5 bg-white-sexy bg-opacity-80 tm-item-container">
+        <h2 class="text-3xl mb-6 tm-text-green">Contact Us</h2>
+        <div class="flex items-start mb-6 tm-menu-item">
+          <img alt="e-mail" class="rounded-md" src="/assets/img/email-icon.png">
+          <div class="ml-3 sm:ml-6">
+            <h3 rel="nofollow">ec@baiweb.org</h3>
           </div>
-          <div class="flex-1 rounded-xl p-12 pb-14 m-5 bg-black-sexy bg-opacity-50 tm-item-container">
+        </div>
+        <div class="flex items-start mb-6 tm-menu-item">
+          <img alt="facebook" class="rounded-md" src="/assets/img/fb-icon.png">
+          <div class="ml-3 sm:ml-6">
+            <a rel="nofollow" target="_blank"
+              href="https://www.facebook.com/bai.indiana">https://www.facebook.com/bai.indiana</a>
+          </div>
+        </div>
+        <div class="flex items-start mb-6 tm-menu-item">
+          <img alt="instagram" class="rounded-md" src="/assets/img/insta-icon.png">
+          <div class="ml-3 sm:ml-6">
+            <a rel="nofollow" target="_blank"
+              href="https://www.instagram.com/bai.indiana">https://www.instagram.com/bai.indiana</a>
+          </div>
+        </div>
+        <div class="flex items-start mb-6 tm-menu-item">
+          <img alt="whatsapp" class="rounded-md" src="/assets/img/wa-icon.png">
+          <div class="ml-3 sm:ml-6">
+            <img alt="whatsapp" class="rounded-md" src="/assets/img/qr-wa.png">
+          </div>
+        </div>
 
-            <form class="text-lg" id="contactForm" (ngSubmit)="validateAndSubmitContactUsForm()">
-              <input class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" id="name" name="name"
-                    [(ngModel)]="contact.name"
-                     placeholder="Name"
-                     required type="text"/>
-              <input class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" id="emailId" name="emailId"
-                     placeholder="Email"
-                     [(ngModel)]="contact.emailId"
-                     required type="email" required/>
-              <textarea class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold" id="message" name="message"
-                        placeholder="Message..."
-                        [(ngModel)]="contact.message"
-                        required rows="6"></textarea>
-              <div class="text-right">
-                  <button class="text-white hover:text-yellow-500 transition"
-                          type="submit">Send it</button>
-              </div>
-            </form>
-            
-            <div class="text-white" id="result"></div>
+      </div>
+      <div class="flex-1 rounded-xl p-12 pb-14 m-5 bg-black-sexy bg-opacity-50 tm-item-container">
+        <div *ngIf="isProcessing; else contactForm" >
+          <!-- Display processing icon or message here -->
+ 
+         
+            <div class="loading-container"></div>
+ 
+
+        </div>
+        <ng-template #contactForm>
+        <form class="text-lg" id="contactForm" (ngSubmit)="validateAndSubmitContactUsForm()">
+          <input class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
+            id="name" name="name" [(ngModel)]="contact.name" placeholder="Name" required type="text" />
+          <input class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
+            id="emailId" name="emailId" placeholder="Email" [(ngModel)]="contact.emailId" required type="email" />
+          <input class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
+            id="phone" name="phone" placeholder="Phone" [(ngModel)]="contact.phone" required type="phone" />
+          <textarea class="input w-full bg-black-sexy border-b bg-opacity-0 text-white px-0 py-4 mb-4 tm-border-gold"
+            id="message" name="message" placeholder="Message..." [(ngModel)]="contact.message" required
+            rows="3"></textarea>
             <div id="error-message" [ngClass]="{'text-danger': hasError}">{{ errorMessage }}</div>
             <p class="tm-text-green">{{ apiResponse }}</p>
+          <div class="text-right">
+            <button class="text-white hover:text-yellow-500 transition" type="submit">Send it</button>
           </div>
+        </form>
+      </ng-template>
       </div>
+    </div>
   </div>
 </div>
