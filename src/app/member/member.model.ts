@@ -25,7 +25,7 @@ export class Member {
       this.firstName = data.firstName || '';
       this.lastName = data.lastName || '';
       this.username = data.username || '';
-      this.dob = data.dob || null;
+      this.dob = data.dob || null || '';
       this.gender = data.gender || null;
       this.addressStreet1 = data.addressStreet1 || '';
       this.addressStreet2 = data.addressStreet2 || '';

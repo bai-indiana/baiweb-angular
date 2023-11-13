@@ -1,26 +1,123 @@
-<div class="parallax-window relative" data-image-src="/assets/img/ec-bg.jpg" data-parallax="scroll" id="contact">
+<div class="parallax-window relative" [style.background-image]="'/assets/img/profile-bg.jpg'"
+    data-image-src="/assets/img/profile-bg.jpg" data-parallax="scroll" id="contact">
     <div class="container mx-auto tm-container pt-24 pb-48 sm:py-48">
         <div class="text-center mb-16">
-            <h2 class="bg-white-sexy tm-text-brown py-6 px-12 text-4xl font-medium inline-block rounded-md bg-opacity-70">{{username}}</h2>
+            <h2
+                class="bg-white-sexy tm-text-brown py-6 px-12 text-4xl font-medium inline-block rounded-md bg-opacity-70">
+                Personal Information</h2>
         </div>
-        <div class="flex flex-col lg:flex-row justify-around items-center">
-            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-black-sexy bg-opacity-60 tm-item-container">
-                <div class="flex items-start mb-6 tm-menu-item">
-                    <img alt="Ma Durga" class="rounded-md" src="/assets/img/committee-1.png">
-                    <div class="ml-3 sm:ml-6">
-                        <h3 class="text-lg sm:text-xl mb-2 sm:mb-3 tm-text-yellow">Members</h3>
-                        <div class="text-white text-md sm:text-lg font-light mb-1">President: - Dr. Nandita Das</div>
-                        <div class="text-white text-md sm:text-lg font-light">Vice-President: Sonali Chanda</div>
-                        <div class="text-white text-md sm:text-lg font-light">Treasurer: Abhijit Das</div>
-                        <div class="text-white text-md sm:text-lg font-light">Secretaries: Sudip Biswas, Kamalika Chatterjee</div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-black bg-opacity-50 tm-item-container">
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
-                    <img alt="Committee" class="rounded-md" src="/assets/img/coming-soon-1.png">
-                </div>
+        <div class="flex flex-col lg:flex-col justify-around items-center">
+            <div
+                class="flex-1 ml-3 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-white-sexy bg-opacity-90 tm-item-container">
+                <mat-tab-group>
+                    <mat-tab label="Personal">
+                        <div class="flex items-start mb-6 tm-menu-item">
+                            <img alt="Ma Durga" class="rounded-md" src="/assets/img/profile-update-icon.png">
+                            <div class="ml-3 sm:ml-6">
+                                <div mat-dialog-title>
+
+                                    <br>
+                                </div>
+                                <form [formGroup]="memberForm" (ngSubmit)="update()">
+                                    <div mat-dialog-content class="content">
+                                        <div class="row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>First name</mat-label>
+                                                <input matInput type="text" placeholder="Ex. Jon"
+                                                    formControlName="firstName">
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Last Name</mat-label>
+                                                <input matInput placeholder="Ex. Dow" formControlName="lastName">
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Email</mat-label>
+                                                <input matInput type="email" placeholder="Ex. jon@gmail.com"
+                                                    formControlName="username">
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Date of birth</mat-label>
+                                                <input matInput [matDatepicker]="picker" formControlName="dob">
+                                                <mat-hint>YYYY-MM-DD</mat-hint>
+                                                <mat-datepicker-toggle matIconSuffix
+                                                    [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                            </mat-form-field>
+                                        </div>
+
+                                        <div class="row">
+                                            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                                                <mat-label><b>Gender</b></mat-label>
+                                                <mat-radio-button value="Male">Male</mat-radio-button>
+                                                <mat-radio-button value="Female">Female</mat-radio-button>
+                                                <mat-radio-button value="Others">Others</mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                        <div class="row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Address</mat-label>
+                                                <input matInput placeholder="Ex. 123 Carmel Drive"
+                                                    formControlName="addressStreet1" required>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>APT/Build#</mat-label>
+                                                <input matInput placeholder="Ex. APT-C"
+                                                    formControlName="addressStreet2">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>City</mat-label>
+                                                <input matInput placeholder="Ex. Carmel" formControlName="addressCity"
+                                                    required>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>State</mat-label>
+                                                <mat-select formControlName="addressState" required>
+                                                    <mat-option *ngFor="let val of state" [value]="val">{{val}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="row">
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Zip</mat-label>
+                                                <input matInput placeholder="Ex. 46074" type="number"
+                                                    formControlName="addressZip" required>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="outline">
+                                                <mat-label>Phone</mat-label>
+                                                <input matInput placeholder="Ex. 1234567890" formControlName="phone"
+                                                    required>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <app-alert *ngIf="hasError" [type]="'alert-danger'" (onClose)="onAlertClose();">{{ errorMessage
+                                            }}</app-alert>
+                                    </div>
+                                    <div mat-dialog-actions class="action">
+                                        <button mat-raised-button type="button" (click)="reset()">Cancel</button>
+                                        <button mat-raised-button color="primary" type="submit"
+                                            [disabled]="!memberForm.valid || isSubmitting">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </mat-tab>
+                    <mat-tab label="Family">
+                        <div mat-dialog-title>
+                            <h1>Family Information</h1>
+                            <br>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Password"> <button mat-raised-button color="primary" (click)="passwordForm()">Update Password</button>
+                    </mat-tab>
+                </mat-tab-group>
             </div>
         </div>
     </div>
-</div>

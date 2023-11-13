@@ -17,12 +17,14 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent {
 
-  pass = '123';
+  pass = 'KLWAN';
   usr = 'sudip.b28@gmail.com';
+  
 
   isLoggedIn = false;
 
   loginForm: FormGroup;
+  passwordForm: FormGroup;
 
   apiResponse: string = '';
   errorMessage: string = '';
@@ -42,10 +44,16 @@ export class LoginComponent {
       username: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       password: ['', Validators.required],
     });
+
+    this.passwordForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]]
+    });
+
   }
 
   ngOnInit(): void {
     this.loginForm.patchValue(this.data);
+    this.passwordForm.patchValue(this.data);
   }
 
   loginSubmit() {
@@ -57,7 +65,7 @@ export class LoginComponent {
           this.onAlertClose();
           this._dialogRef.close(true);
           this.isLoggedIn = true;
-          this._coreService.setAuthToken(res.access_token, res.refresh_token, res.username);
+          this._coreService.setAuthToken(res.access_token, res.refresh_token, res.username, res.role);
           this.router.navigate(['/profile']);
           this.loginService.loggedIn(res);
         },
@@ -67,6 +75,26 @@ export class LoginComponent {
         },
       });
     }
+  }
+
+
+  generateTempPassword() {
+    if (this.passwordForm.valid) {
+      let username = this.passwordForm.get('username')?.value;
+      this.isSubmitting = true;
+      this.loginService.createTempPassword(username).subscribe({
+        next: (res: AuthenticationResponse) => {
+          this._coreService.openSnackBar('Please check your email for temporary password!!');
+          this.onAlertClose();
+ 
+        },
+        error: (err: any) => {
+          this.handleError('generateTempPassword', err);
+
+        },
+      });
+    }
+    this.isSubmitting = false;
   }
   onAlertClose() {
     this.hasError = false;
@@ -80,10 +108,12 @@ export class LoginComponent {
       this.errorMessage = BACKEND_SYS_ERROR;
     } else {
       this.errorMessage = JSON.stringify(err.error)
-        .replaceAll('{', ' ')
-        .replaceAll('}', ' ')
-        .replaceAll('"', ' ');
-    }
-
+          .replaceAll('{', ' ')
+          .replaceAll('}', ' ')
+          .replaceAll('"', ' ');
+      }
+      if (this.errorMessage.includes('Bad credentials')) {
+        this.errorMessage = 'Email-Id is not valid or password does not match!!  ';
+      }  
   }
 }

@@ -31,6 +31,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
@@ -41,6 +42,9 @@ import { CustomDateAdapter } from './shared/customDateAdapter ';
 import { LoginComponent } from './member/login/login.component';
 import { ProfileComponent } from './member/profile/profile.component';
 import { AlertComponent } from './shared/alert/alert.component';
+import { DatePipe } from '@angular/common';
+import { PasswordComponent } from './member/profile/password/password/password.component';
+import { FamilyComponent } from './member/profile/family/family/family.component';
 
 
 @NgModule({
@@ -59,7 +63,9 @@ import { AlertComponent } from './shared/alert/alert.component';
     RegistrationComponent,
     LoginComponent,
     ProfileComponent,
-    AlertComponent
+    AlertComponent,
+    PasswordComponent,
+    FamilyComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +89,8 @@ import { AlertComponent } from './shared/alert/alert.component';
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule
   ],
   providers: [
     ContactService,
@@ -98,6 +105,7 @@ import { AlertComponent } from './shared/alert/alert.component';
       useValue: {}
     },
     { provide: DateAdapter, useClass: CustomDateAdapter },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

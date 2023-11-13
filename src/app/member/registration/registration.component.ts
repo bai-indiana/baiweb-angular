@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit {
       addressStreet2: [''],
       addressCity: ['', Validators.required],
       addressState: ['', Validators.required],
-      addressZip: [null, [Validators.required,Validators.maxLength(5),Validators.minLength(5), Validators.pattern("^[0-9]*$")]],
+      addressZip: [null, [Validators.required, Validators.pattern(/^\d{5}$/)]],
       phone: [null, [Validators.required,Validators.maxLength(10),Validators.minLength(10), Validators.pattern("^[0-9]*$")]]
     });
   }

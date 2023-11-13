@@ -16,6 +16,17 @@ export class CoreService {
     });
   }
 
+  getFormatedServerErrMsg(err: HttpErrorResponse) : string{
+    return JSON.stringify(err.error)
+    .replaceAll('{', ' ')
+    .replaceAll('}', ' ')
+    .replaceAll('"', ' ')
+  }
+
+  getMyUrl(){
+    return  window.location.href;
+  }
+
   getHeader() {
     let httpOptions = {
       headers: new HttpHeaders({
@@ -48,20 +59,27 @@ export class CoreService {
     return window.localStorage.getItem("username");
   }
 
+  getRole(): string | null {
+    return window.localStorage.getItem("role");
+  }
+
   resetAuthToken() {
     window.localStorage.removeItem("auth_token");
     window.localStorage.removeItem("auth_token_refresh");
     window.localStorage.removeItem("username");
+    window.localStorage.removeItem("role");
   }
 
   setAuthToken(
     token: string | null,
     tokenRefresh: string,
-    username: string): void {
+    username: string,
+    role: string): void {
     if (token !== null) {
       window.localStorage.setItem("auth_token", token);
       window.localStorage.setItem("auth_token_refresh", tokenRefresh);
       window.localStorage.setItem("username", username);
+      window.localStorage.setItem("role", role);
     } else {
       this.resetAuthToken();
     }

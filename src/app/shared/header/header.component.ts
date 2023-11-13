@@ -21,19 +21,20 @@ import { Binary } from '@angular/compiler';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit  {
+export class HeaderComponent implements OnInit {
 
 
   isLoggedIn = false;
-  role = ''
-  username = ''
+  role: any | null;
+  username: any | null;
+
   private subscription: Subscription;
 
   errorMessage: string = '';
-  
+
   admin = false;
- 
- 
+
+
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -42,31 +43,59 @@ export class HeaderComponent implements OnInit  {
     private _coreService: CoreService,
   ) {
     this.subscription = this.loginService.loggedInStatusChange.subscribe((authResponse) => {
-      if(authResponse){
+      if (authResponse) {
 
         this.username = authResponse.username;
         this.isLoggedIn = true;
 
         this.role = authResponse.role;
 
-        if(this.role==='ADMIN'){
+        if (this.role === 'ADMIN') {
           this.admin = true;
-        }else{
+        } else {
           this.admin = false;
         }
-        
-      }else{
+
+      } else {
         this.role = 'Access Denied';
         this.username = 'Not Logged-In';
         this.isLoggedIn = false;
-        this.admin= false;
-      }    
-      });
+        this.admin = false;
+      }
+    });
   }
 
   ngOnInit(): void {
+
+    if (this._coreService.getUsername()) {
+
+
+      const username = `${this._coreService.getUsername()}`;
+      this.commonService.getByUsername(username).subscribe({
+        next: (res: Member) => {
+          this.username = res.username;
+          this.role = res.role;
+          this.isLoggedIn = true;
+
+          if (this.role === 'ADMIN') {
+            this.admin = true;
+          } else {
+            this.admin = false;
+          }
+
+          if (this._coreService.getMyUrl().includes('/home')) {
+            this.router.navigate(['/profile']);
+          }
+        },
+        error: (err: any) => {
+          this.handleError('Error loding profile!! ', err);
+          this.logout();
+        },
+      });
+
+    }
   }
- 
+
   registrationForm() {
     const dialogRef = this._dialog.open(RegistrationComponent);
     dialogRef.afterClosed().subscribe({
@@ -82,12 +111,12 @@ export class HeaderComponent implements OnInit  {
     const dialogRef = this._dialog.open(LoginComponent);
   }
 
-  logout(){
+  logout() {
     this.commonService.logout().subscribe({
-      next: () => { 
-         this._coreService.openSnackBar("Goodbye! You have been successfully logged out.!!");
-         this.loginService.loggedOut(null);
-         this.router.navigate(['/home']);
+      next: () => {
+        this._coreService.openSnackBar("Goodbye! You have been successfully logged out.!!");
+        this.loginService.loggedOut(null);
+        this.router.navigate(['/home']);
       },
       error: (err: any) => {
         this.handleError('logout', err);
@@ -99,7 +128,8 @@ export class HeaderComponent implements OnInit  {
   handleError(method: string, err: HttpErrorResponse) {
     console.error(err.error);
     if (err.status == 403) {
-      this.errorMessage = BACKEND_SYS_ERROR;
+      this.errorMessage = 'Your login has been expired, Please login again';
+      this.router.navigate(['/home']);
     } else {
       this.errorMessage = JSON.stringify(err.error)
         .replaceAll('{', ' ')

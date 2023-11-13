@@ -1,25 +1,27 @@
-<nav class="fixed w-full" id="tm-nav" *ngIf="isLoggedIn; else notLoggedInMenu"  >
+<nav class="fixed w-full bg-black-sexy  bg-opacity-50" id="tm-nav" *ngIf="isLoggedIn; else notLoggedInMenu"  >
   <div class="tm-container mx-auto px-2 md:py-6 text-right">
       <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
       <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#home">Profile1</a></li>
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#events">Profile2</a>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="/profile">Personal</a></li>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#events">Family</a>
           </li>
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">About</a>
-          </li>                
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">Membership</a>
+          </li>   
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">Events</a>
+          </li>              
           <li *ngIf="admin"  class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#member">Admin</a>
             <ul class="submenu">
-              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  (click)="showLoginPage()">Admin1</a></li>
-              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Admin2</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  (click)="showLoginPage()">Members</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Events</a></li>
             </ul>
           </li>
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#contact">Logout</a>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" (click)="logout()">Logout</a>
           </li>
       </ul>
   </div>
 </nav>
 <ng-template #notLoggedInMenu>
-<nav class="fixed w-full" id="tm-nav" >
+<nav class="fixed w-full  bg-black-sexy  bg-opacity-50" id="tm-nav" >
   <div class="tm-container mx-auto px-2 md:py-6 text-right">
       <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
       <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
