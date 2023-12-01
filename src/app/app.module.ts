@@ -44,7 +44,8 @@ import { ProfileComponent } from './member/profile/profile.component';
 import { AlertComponent } from './shared/alert/alert.component';
 import { DatePipe } from '@angular/common';
 import { PasswordComponent } from './member/profile/password/password/password.component';
-import { FamilyComponent } from './member/profile/family/family/family.component';
+import { FamilyComponent } from './member/profile/family/family.component';
+import { FamilyGridComponent } from './member/profile/family/grid/family.grid.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { FamilyComponent } from './member/profile/family/family/family.component
     ProfileComponent,
     AlertComponent,
     PasswordComponent,
-    FamilyComponent
+    FamilyComponent,
+    FamilyGridComponent
   ],
   imports: [
     BrowserModule,

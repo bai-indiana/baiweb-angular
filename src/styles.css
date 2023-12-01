@@ -15,5 +15,9 @@
     z-index: 999; /* ensures it's above other content */
   }
 
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
   
   

@@ -2,12 +2,15 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BACKEND_SYS_ERROR } from '../constants';
+import { Member } from '../member/member.model';
+import { CommonService } from '../shared/common.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoreService {
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(
+    private _snackBar: MatSnackBar) { }
 
   openSnackBar(message: string, action: string = 'ok') {
     this._snackBar.open(message, action, {
@@ -55,7 +58,7 @@ export class CoreService {
     return window.localStorage.getItem("auth_token_refresh");
   }
 
-  getUsername(): string | null {
+  getUsername(): string | null | '' {
     return window.localStorage.getItem("username");
   }
 
@@ -63,11 +66,24 @@ export class CoreService {
     return window.localStorage.getItem("role");
   }
 
+  getMember(): Member | null {
+    const member = window.localStorage.getItem("member");
+  if (member !== null) {
+    return JSON.parse(member) as Member;
+  }
+  return null;
+  }
+
   resetAuthToken() {
     window.localStorage.removeItem("auth_token");
     window.localStorage.removeItem("auth_token_refresh");
     window.localStorage.removeItem("username");
     window.localStorage.removeItem("role");
+    window.localStorage.removeItem("member");
+  }
+
+  setMember(member: Member){
+    window.localStorage.setItem("member", JSON.stringify(member));
   }
 
   setAuthToken(

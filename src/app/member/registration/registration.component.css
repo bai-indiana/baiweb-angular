@@ -1,0 +1,11 @@
+.content {
+    padding-top: 10;
+}
+
+.row {
+    display: flex;
+}
+
+.col {
+    display: flex;
+}

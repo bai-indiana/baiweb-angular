@@ -55,23 +55,15 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this._coreService.getAuthToken()) {
-      const username = `${this._coreService.getUsername()}`;
-      this.commonService.getByUsername(username).subscribe({
-        next: (member: Member) => {
-          this.memberId = member.id;
-          member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), 'yyyy-MM-dd')}`);
-          this.memberForm.patchValue(member);
-        },
-        error: (err: any) => {
-          this.handleError('Error loding profile!! ', err);
-        },
-      });
+    const member = this._coreService.getMember();
+    if (member) {
+      this.memberId = member.id;
+      member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), 'yyyy-MM-dd')}`);
+      this.memberForm.patchValue(member);
     } else {
       this._coreService.openSnackBar('Page access denied!! Not authorized');
       this.router.navigate(['/home']);
     }
-
   }
 
   update() {

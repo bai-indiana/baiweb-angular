@@ -19,7 +19,8 @@ export class LoginComponent {
 
   pass = 'KLWAN';
   usr = 'sudip.b28@gmail.com';
-  
+
+  member: Member | null | undefined;
 
   isLoggedIn = false;
 
@@ -66,8 +67,21 @@ export class LoginComponent {
           this._dialogRef.close(true);
           this.isLoggedIn = true;
           this._coreService.setAuthToken(res.access_token, res.refresh_token, res.username, res.role);
-          this.router.navigate(['/profile']);
-          this.loginService.loggedIn(res);
+          if (res.username) {
+            this.commonService.getByUsername(res.username).subscribe({
+              next: (member: Member) => {
+                this._coreService.setMember(member);
+
+                this.router.navigate(['/profile']);
+                this.loginService.loggedIn(res);
+
+              },
+              error: (err: any) => {
+                this.handleError('Error setting member!! ', err);
+              },
+            });
+          }
+
         },
         error: (err: any) => {
           this.handleError('loginSubmit', err);
@@ -86,7 +100,7 @@ export class LoginComponent {
         next: (res: AuthenticationResponse) => {
           this._coreService.openSnackBar('Please check your email for temporary password!!');
           this.onAlertClose();
- 
+
         },
         error: (err: any) => {
           this.handleError('generateTempPassword', err);
@@ -108,12 +122,12 @@ export class LoginComponent {
       this.errorMessage = BACKEND_SYS_ERROR;
     } else {
       this.errorMessage = JSON.stringify(err.error)
-          .replaceAll('{', ' ')
-          .replaceAll('}', ' ')
-          .replaceAll('"', ' ');
-      }
-      if (this.errorMessage.includes('Bad credentials')) {
-        this.errorMessage = 'Email-Id is not valid or password does not match!!  ';
-      }  
+        .replaceAll('{', ' ')
+        .replaceAll('}', ' ')
+        .replaceAll('"', ' ');
+    }
+    if (this.errorMessage.includes('Bad credentials')) {
+      this.errorMessage = 'Email-Id is not valid or password does not match!!  ';
+    }
   }
 }

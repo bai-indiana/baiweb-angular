@@ -5,6 +5,7 @@ export const CLIENT_LOCATION_URL = 'https://geolocation-db.com/json/';
 export const MEMBER_ENDPOINT='api/member'
 export const UPD_PASS_ENDPOINT=MEMBER_ENDPOINT+'/updatePassword'
 export const MEMBER_REGISTRATION_ENDPOINT='api/auth/register'
+export const FAMILY_ENDPOINT='api/fam'
 export const TEMP_PASS_ENDPOINT='api/auth/tempPassword'
 export const MEMBER_LOGIN_ENDPOINT='api/auth/login'
 export const MEMBER_LOGOUT_ENDPOINT='api/auth/logout'
@@ -13,4 +14,13 @@ export const STATE_LIST: string[] = [
     'IN',
     'OH',
     'KY'
+  ]
+
+export const RELATION_TYPES: string[] = [
+  'SPOUSE',
+  'SON',
+  'DAUGHTER',
+  'MOTHER',
+  'FATHER',
+  'OTHER'
   ]
