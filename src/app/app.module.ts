@@ -46,6 +46,16 @@ import { DatePipe } from '@angular/common';
 import { PasswordComponent } from './member/profile/password/password/password.component';
 import { FamilyComponent } from './member/profile/family/family.component';
 import { FamilyGridComponent } from './member/profile/family/grid/family.grid.component';
+import { MembershipRegComponent } from './member/membership-registration/membership.reg.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { MembershipComponent } from './member/membership/membership.component';
+import { MembershipGridComponent } from './member/membership/grid/membership.grid.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { RenewComponent } from './member/membership-registration/renew/renew.component';
+import { DialogComponent } from './shared/dialog/dialog.component';
+import { UsersComponent } from './member/registration/users/users.component';
+import { UsersGridComponent } from './member/registration/users/grid/users.grid.component';
+ 
 
 
 @NgModule({
@@ -67,7 +77,14 @@ import { FamilyGridComponent } from './member/profile/family/grid/family.grid.co
     AlertComponent,
     PasswordComponent,
     FamilyComponent,
-    FamilyGridComponent
+    FamilyGridComponent,
+    MembershipRegComponent,
+    MembershipComponent,
+    MembershipGridComponent,
+    RenewComponent,
+    DialogComponent,
+    UsersComponent,
+    UsersGridComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +109,9 @@ import { FamilyGridComponent } from './member/profile/family/grid/family.grid.co
     MatSortModule,
     MatSnackBarModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSidenavModule,
+    MatTooltipModule
   ],
   providers: [
     ContactService,

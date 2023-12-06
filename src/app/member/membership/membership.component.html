@@ -1,0 +1,44 @@
+<mat-tab-group>
+    <mat-tab label="Membership Form">
+        <div class="flex items-start mb-6 tm-menu-item">
+            <img alt="Membership" class="rounded-md" src="/assets/img/profile-update-icon.png">
+            <div class="ml-3 sm:ml-6">
+                <div mat-dialog-title>
+
+                </div>
+                <form [formGroup]="membershipForm" (ngSubmit)="onFormSubmit()">
+                    <div mat-dialog-content class="content">
+                        <div class="row">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Plan name</mat-label>
+                                <input matInput type="text" placeholder="Ex. General" formControlName="name">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Type</mat-label>
+                                    <mat-select formControlName="type" required>
+                                        <mat-option *ngFor="let val of types" [value]="val">{{val}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Price</mat-label>
+                                    <input matInput placeholder="Ex. 55" type="number" formControlName="price" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div mat-dialog-actions class="action">
+                        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

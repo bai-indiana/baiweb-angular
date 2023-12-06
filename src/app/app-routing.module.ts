@@ -9,8 +9,11 @@ import { ExecutiveCommitteeComponent } from './executive-committee/executive-com
 import { MemberComponent } from './member/member.component';
 import { RegistrationComponent } from './member/registration/registration.component';
 import { LoginComponent } from './member/login/login.component';
+import { MembershipRegComponent } from './member/membership-registration/membership.reg.component';
 import { ProfileComponent } from './member/profile/profile.component';
 import { AnnouncementsComponent } from './announcements/announcements.component';
+import { MembershipGridComponent } from './member/membership/grid/membership.grid.component';
+import { UsersComponent } from './member/registration/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -51,8 +54,20 @@ const routes: Routes = [
     component: ProfileComponent,
   },
   {
-    path: 'contact',
-    component: ContactComponent,
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'membership-reg',
+    component: MembershipRegComponent,
+  },
+  {
+    path: 'membership-grid',
+    component: MembershipGridComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
   },
   {
     path: 'announcements',

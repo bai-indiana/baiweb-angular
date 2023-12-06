@@ -48,36 +48,17 @@ export class FamilyComponent implements OnInit {
       fullName: ['', Validators.required],
       dob: [null, Validators.required],
       relationshipType: ['', Validators.required],
-      phone: [null, [Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern("^[0-9]*$")]]
+      phone: [null, [Validators.required, Validators.pattern(/^\d{10}$/)]]
     });
   }
 
   ngOnInit(): void {
+    if(this.data){
+      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), 'yyyy-MM-dd')}`);
+    }
     this.famForm.patchValue(this.data);
   }
-
-  // update() {
-  //   if (this.famForm.valid) {
-  //     this.isSubmitting = true;
-  //     this.commonService.update(this.famId, this.famForm.value, FAMILY_ENDPOINT).subscribe({
-  //       next: (fam: Family) => {
-  //         this.famId = fam.id;
-  //         this.family=fam;
-  //         this.family.dob = new Date(`${this.datePipe.transform(new Date(fam.dob), 'yyyy-MM-dd')}`);
-  //         this.famForm.patchValue(fam);
-
-
-  //         this._coreService.openSnackBar('Update successfully');
-  //         this.onAlertClose();
-  //         this.isSubmitting = false;
-  //       },
-  //       error: (err: any) => {
-  //         this.handleError('onSubmit', err);
-  //       },
-  //     });
-  //   }
-  // }
-
+ 
   onFamFormSubmit() {
     if (this.famForm.valid) {
       if (this.data) {

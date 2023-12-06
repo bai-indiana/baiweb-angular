@@ -3,9 +3,11 @@ import { CommonService } from '../../shared/common.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CoreService } from 'src/app/core/core.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MEMBER_REGISTRATION_ENDPOINT } from '../../constants';
+import { MEMBER_ENDPOINT, MEMBER_REGISTRATION_ENDPOINT } from '../../constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BACKEND_SYS_ERROR } from '../../constants';
+import { Member } from '../member.model';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -32,8 +34,9 @@ export class RegistrationComponent implements OnInit {
     private commonService: CommonService,
     private formBuilder: FormBuilder,
     private _coreService: CoreService,
+    private datePipe: DatePipe,
     private _dialogRef: MatDialogRef<RegistrationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: Member
   ) {
     this.memberForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
@@ -53,25 +56,42 @@ export class RegistrationComponent implements OnInit {
 
 
   ngOnInit(): void {
+    if(this.data){
+      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), 'yyyy-MM-dd')}`);
+    }
     this.memberForm.patchValue(this.data);
   }
 
-  onAddMemberSubmit() {
-
+  onFormSubmit() {
     if (this.memberForm.valid) {
-      this.isSubmitting = true;
-      this.commonService.add(this.memberForm.value,MEMBER_REGISTRATION_ENDPOINT).subscribe({
-        next: (val: any) => {
-          this._coreService.openSnackBar('Member added successfully, Please check your email for login details');
-          this.onAlertClose();
-          this._dialogRef.close(true);
-        },
-        error: (err: any) => {
-          this.handleError('onSubmit', err);
-        },
-      });
+      this.isSubmitting=true;
+      if (this.data) {
+        this.commonService
+          .update(this.data.id, this.memberForm.value,MEMBER_ENDPOINT)
+          .subscribe({
+            next: (val: any) => {
+              this._coreService.openSnackBar('Member detail updated!');
+              this._dialogRef.close(true);
+            },
+            error: (err: any) => {
+             this.handleError("onFormSubmit",err);
+            },
+          });
+      } else {
+        this.commonService.add(this.memberForm.value,MEMBER_REGISTRATION_ENDPOINT).subscribe({
+          next: (val: any) => {
+            this._coreService.openSnackBar('Member added successfully, Please check your email for login details');
+            this.onAlertClose();
+            this._dialogRef.close(true);
+          },
+          error: (err: any) => {
+            this.handleError('onFormSubmit', err);
+          },
+        });
+      }
     }
   }
+ 
 
   onAlertClose(){
     this.hasError = false;

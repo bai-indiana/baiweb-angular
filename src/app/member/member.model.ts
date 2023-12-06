@@ -1,3 +1,5 @@
+import { Family } from "./profile/family/family.model";
+
 export class Member {
     id: number;
     firstName: string;
@@ -18,6 +20,7 @@ export class Member {
     lastPasswordChanged: Date;
     temporaryPasswordChanged: boolean;
     role: string;
+    families: Family[];
   
     constructor(data: any
     ) {
@@ -40,5 +43,6 @@ export class Member {
       this.lastPasswordChanged = data.lastPasswordChanged || null;
       this.temporaryPasswordChanged = data.temporaryPasswordChanged || false;
       this.role = data.role || 'USER';
+      this.families = data.families || null;
     }
   }

@@ -1,0 +1,35 @@
+<mat-tab-group>
+    <mat-tab label="Renew Form">
+        <div class="flex items-start mb-6 tm-menu-item">
+            <img alt="Membership" class="rounded-md" src="/assets/img/profile-update-icon.png">
+            <div class="ml-3 sm:ml-6">
+                <div mat-dialog-title>
+
+                </div>
+                <form [formGroup]="renewForm" (ngSubmit)="onFormSubmit()">
+                    <div mat-dialog-content class="content">
+ 
+
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Payment Mode</mat-label>
+                                    <mat-select formControlName="paidBy" required>
+                                        <mat-option *ngFor="let val of paidBy" [value]="val">{{val}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div mat-dialog-actions class="action">
+                        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+                        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+                    </div>
+                </form>
+               
+            </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>

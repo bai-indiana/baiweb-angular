@@ -1,0 +1,104 @@
+.image-size {
+  width: 50px;
+  /* Adjust the width as needed */
+  height: 50px;
+  /* Adjust the height as needed */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid rgb(241, 241, 241);
+}
+
+td,
+th {
+  width: 25%;
+  padding: 10px;
+  text-align: left;
+}
+
+.bold-column {
+  font-weight: bold;
+  font-size: .7em;
+}
+
+.normal-column {
+  font-weight: normal;
+  font-size: .7em;
+}
+
+.main-body {
+  padding-top: 10px;
+  margin: 0 auto;
+  max-width: 700px;
+
+}
+
+.main-body mat-form-field {
+  width: 100%;
+}
+
+.example-container {
+  width: 100%;
+  height: 150px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.status-sidenav-content-Expired {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #f1aaaa, rgb(83, 2, 2));
+}
+
+.status-sidenav-content-Expired button {
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  background-color: rgb(70, 2, 2);
+}
+
+.status-sidenav-content-Active {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #00cc00, #006600);
+}
+
+.status-sidenav-content-Active button {
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  background-color: rgb(0, 58, 22);
+}
+
+.status-sidenav-content-Pending {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, rgb(255, 188, 87), rgb(255, 153, 0));
+}
+
+.status-sidenav-content-Pending button {
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  background-color: rgb(99, 12, 1);
+}
+
+
+
+.example-sidenav {
+  padding: 20px;
+}

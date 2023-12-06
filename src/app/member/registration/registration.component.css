@@ -9,3 +9,6 @@
 .col {
     display: flex;
 }
+.action button{
+    flex: 1;
+ }

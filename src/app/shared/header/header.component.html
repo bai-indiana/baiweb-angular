@@ -2,17 +2,17 @@
   <div class="tm-container mx-auto px-2 md:py-6 text-right">
       <button class="md:hidden py-2 px-2" id="menu-toggle"><i class="fas fa-2x fa-bars tm-text-gold"></i></button>
       <ul class="mb-3 md:mb-0 text-2xl font-normal flex justify-end flex-col md:flex-row">
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="/profile">Personal</a></li>
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#events">Family</a>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/profile">Personal</a>
           </li>
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">Membership</a>
+          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="/membership-reg">Membership</a>
           </li>   
-          <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#about">Events</a>
-          </li>              
-          <li *ngIf="admin"  class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="./#member">Admin</a>
+          <!-- <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" routerLink="./#about">Events</a>
+          </li>               -->
+          <li *ngIf="admin"  class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" href="#">Admin</a>
             <ul class="submenu">
-              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  (click)="showLoginPage()">Members</a></li>
-              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Events</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  routerLink="/users">Members</a></li>
+              <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4"  routerLink="/membership-grid">Membership</a></li>
+              <!-- <li class="mb-1 mx-auto" ><a class="tm-text-gold text-lg py-1 md:py-3 px-4" (click)="registrationForm()">Events</a></li> -->
             </ul>
           </li>
           <li class="inline-block mb-4 mx-4"><a class="tm-text-gold py-1 md:py-3 px-4" (click)="logout()">Logout</a>

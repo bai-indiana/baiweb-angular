@@ -1,12 +1,12 @@
 <div mat-dialog-title>
-    <h1>Registration Form</h1>
+    <h1>Member Registration Form</h1>
     <hr>
 
 </div>
 <div>
     <app-alert *ngIf="hasError" [type]="'alert-danger'" (onClose)="onAlertClose();">{{ errorMessage }}</app-alert>
 </div>
-<form [formGroup]="memberForm" (ngSubmit)="onAddMemberSubmit()">
+<form [formGroup]="memberForm" (ngSubmit)="onFormSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
             <div class="col">
@@ -104,9 +104,13 @@
             </div>
         </div>
     </div>
-    <div mat-dialog-actions class="action">
+    <!-- <div mat-dialog-actions class="action">
         <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
         <button mat-raised-button color="primary" type="submit" [disabled]="!memberForm.valid || isSubmitting">Register</button>
+    </div> -->
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
     </div>
 </form>
  

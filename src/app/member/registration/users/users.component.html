@@ -1,0 +1,22 @@
+<div class="parallax-window relative" [style.background-image]="'/assets/img/profile-bg.jpg'"
+    data-image-src="/assets/img/profile-bg.jpg" data-parallax="scroll" id="contact">
+    <div class="container mx-auto tm-container pt-24 pb-48 sm:py-48">
+        <div class="text-center mb-16">
+            <h2
+                class="bg-white-sexy tm-text-brown py-6 px-12 text-4xl font-medium inline-block rounded-md bg-opacity-70">
+                Members Information</h2>
+        </div>
+        <div class="flex flex-col lg:flex-col justify-around items-center">
+            <div
+                class="flex-1 ml-3 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-white-sexy bg-opacity-90 tm-item-container">
+                <mat-tab-group>
+                    <mat-tab label="Members">
+                        <div mat-dialog-title>
+                            <app-users-grid></app-users-grid>
+                            <br>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>

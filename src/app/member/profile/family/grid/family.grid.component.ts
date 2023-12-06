@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -18,8 +18,10 @@ import { Family } from '../family.model';
   styleUrls: ['./family.grid.component.css']
 })
 export class FamilyGridComponent implements OnInit {
-  
+
   member: Member | null = null;
+
+  disableAddFamily: boolean = false;
 
   errorMessage: string = '';
   hasError: boolean = false;
@@ -31,6 +33,7 @@ export class FamilyGridComponent implements OnInit {
     'dob',
     'relationshipType',
     'phone'
+
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -41,12 +44,23 @@ export class FamilyGridComponent implements OnInit {
     private router: Router,
     private _dialog: MatDialog,
     private _commonService: CommonService,
-    private _coreService: CoreService
-  ) {}
+    private _coreService: CoreService,
+    @Inject(MAT_DIALOG_DATA) public data: Member
+  ) { }
 
   ngOnInit(): void {
     if (this._coreService.getAuthToken()) {
-      this.member = this._coreService.getMember();
+
+
+      if (Object.keys(this.data).length === 0) {
+        // Show family for loggedin user
+        this.member = this._coreService.getMember();
+      } else {
+        // If this has been called from admin memeber family then show family for that user
+        this.member = this.data;
+        this.disableAddFamily = true;
+      }
+
       this.getFamList();
     } else {
       this._coreService.openSnackBar('Page access denied!! Not authorized');
@@ -88,7 +102,7 @@ export class FamilyGridComponent implements OnInit {
   }
 
   deleteFam(id: number) {
-    this._commonService.delete(id,FAMILY_ENDPOINT).subscribe({
+    this._commonService.delete(id, FAMILY_ENDPOINT).subscribe({
       next: (res) => {
         this._coreService.openSnackBar('Family deleted!', 'done');
         this.getFamList();
@@ -111,17 +125,17 @@ export class FamilyGridComponent implements OnInit {
     });
   }
 
-  handleError(method: string, err: HttpErrorResponse){
+  handleError(method: string, err: HttpErrorResponse) {
     this.hasError = true;
     console.error(err.error);
-    if(err.status==403){
-      this.errorMessage=BACKEND_SYS_ERROR;
-    }else{
-      this.errorMessage=JSON.stringify(err.error)
-                                .replaceAll('{',' ')
-                                .replaceAll('}',' ')
-                                .replaceAll('"',' ');
+    if (err.status == 403) {
+      this.errorMessage = BACKEND_SYS_ERROR;
+    } else {
+      this.errorMessage = JSON.stringify(err.error)
+        .replaceAll('{', ' ')
+        .replaceAll('}', ' ')
+        .replaceAll('"', ' ');
     }
-   
+
   }
 }
