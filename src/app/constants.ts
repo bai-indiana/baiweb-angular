@@ -1,5 +1,5 @@
-export const BASE_URL = 'http://localhost:8080'; // local
-// export const BASE_URL = 'https://bai-backenngd-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io'; // stage
+// export const BASE_URL = 'http://localhost:8080'; // local
+export const BASE_URL = 'https://bai-backend-service-stage.whiteriver-6da5cceb.eastus.azurecontainerapps.io'; // stage
 // export const BASE_URL = 'https://bai-backend-service.whiteriver-6da5cceb.eastus.azurecontainerapps.io'; // prod
 export const CLIENT_LOCATION_URL = 'https://geolocation-db.com/json/';
 export const MEMBER_ENDPOINT = 'api/member'
