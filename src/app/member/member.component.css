@@ -1,0 +1,19 @@
+.action{
+    padding: 0px 25px 20px;
+}
+
+.action button{
+   flex: 1;
+}
+ 
+/* Normal state */
+.link-style {
+    color: orange;
+    text-decoration: none; /* Remove underline, adjust as needed */
+  }
+  
+  /* Hover state */
+  .link-style:hover {
+    color: darkorange; /* Change color on hover if desired */
+    cursor: pointer; /* Change cursor to hand on hover */
+  }

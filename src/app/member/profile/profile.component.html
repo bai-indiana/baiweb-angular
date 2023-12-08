@@ -47,14 +47,17 @@
                                                 <mat-datepicker #picker></mat-datepicker>
                                             </mat-form-field>
                                         </div>
-
+                                         
                                         <div class="row">
-                                            <mat-radio-group aria-label="Select an option" formControlName="gender">
-                                                <mat-label><b>Gender</b></mat-label>
-                                                <mat-radio-button value="Male">Male</mat-radio-button>
-                                                <mat-radio-button value="Female">Female</mat-radio-button>
-                                                <mat-radio-button value="Others">Others</mat-radio-button>
-                                            </mat-radio-group>
+                                            <div class="gap-vertical-20">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>Gender</mat-label>
+                                                    <mat-select formControlName="gender" required>
+                                                        <mat-option *ngFor="let val of gen" [value]="val">{{val}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <mat-form-field appearance="outline">
@@ -74,13 +77,15 @@
                                                 <input matInput placeholder="Ex. Carmel" formControlName="addressCity"
                                                     required>
                                             </mat-form-field>
-                                            <mat-form-field appearance="outline">
-                                                <mat-label>State</mat-label>
-                                                <mat-select formControlName="addressState" required>
-                                                    <mat-option *ngFor="let val of state" [value]="val">{{val}}
-                                                    </mat-option>
-                                                </mat-select>
-                                            </mat-form-field>
+                                            <div class="col">
+                                                <mat-form-field appearance="outline">
+                                                    <mat-label>State</mat-label>
+                                                    <mat-select formControlName="addressState" required>
+                                                        <mat-option *ngFor="let val of state" [value]="val">{{val}}
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <mat-form-field appearance="outline">
@@ -96,7 +101,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <app-alert *ngIf="hasError" [type]="'alert-danger'" (onClose)="onAlertClose();">{{ errorMessage
+                                        <app-alert *ngIf="hasError" [type]="'alert-danger'"
+                                            (onClose)="onAlertClose();">{{ errorMessage
                                             }}</app-alert>
                                     </div>
                                     <div mat-dialog-actions class="action">
@@ -115,7 +121,8 @@
                             <br>
                         </div>
                     </mat-tab>
-                    <mat-tab label="Password"> <button mat-raised-button color="primary" (click)="passwordForm()">Update Password</button>
+                    <mat-tab label="Password"> <button mat-raised-button color="primary" (click)="passwordForm()">Update
+                            Password</button>
                     </mat-tab>
                 </mat-tab-group>
             </div>

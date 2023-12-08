@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CoreService } from 'src/app/core/core.service';
 import { CommonService } from 'src/app/shared/common.service';
 import { Member } from 'src/app/member/member.model';
-import { BACKEND_SYS_ERROR, MEMBER_ENDPOINT, MEMBER_REGISTRATION_ENDPOINT, STATE_LIST } from 'src/app/constants';
+import { BACKEND_SYS_ERROR, DATE_FORMAT, GENDER, MEMBER_ENDPOINT, MEMBER_REGISTRATION_ENDPOINT, STATE_LIST } from 'src/app/constants';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
 
   state: string[] = STATE_LIST;
   isSubmitting = false;
+
+  gen: string[] = GENDER;
 
   apiResponse: string = '';
   errorMessage: string = '';
@@ -58,7 +60,7 @@ export class ProfileComponent implements OnInit {
     const member = this._coreService.getMember();
     if (member) {
       this.memberId = member.id;
-      member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), 'yyyy-MM-dd')}`);
+      member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), DATE_FORMAT)}`);
       this.memberForm.patchValue(member);
     } else {
       this._coreService.openSnackBar('Page access denied!! Not authorized');
@@ -73,7 +75,7 @@ export class ProfileComponent implements OnInit {
         next: (member: Member) => {
 
           this.memberId = member.id;
-          member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), 'yyyy-MM-dd')}`);
+          member.dob = new Date(`${this.datePipe.transform(new Date(member.dob), DATE_FORMAT)}`);
           this.memberForm.patchValue(member);
 
 

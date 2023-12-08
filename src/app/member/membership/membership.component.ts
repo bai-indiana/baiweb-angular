@@ -47,6 +47,7 @@ export class MembershipComponent implements OnInit {
   onFormSubmit() {
 
     if (this.membershipForm.valid) {
+      this.isSubmitting = true;
       if (this.data) {
         this.commonService
           .update(this.data.id, this.membershipForm.value, MEMBERSHIP_ENDPOINT)

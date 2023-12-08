@@ -55,6 +55,7 @@ import { RenewComponent } from './member/membership-registration/renew/renew.com
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { UsersComponent } from './member/registration/users/users.component';
 import { UsersGridComponent } from './member/registration/users/grid/users.grid.component';
+import { DateFormatPipe } from './shared/date-format.pipe';
  
 
 
@@ -84,7 +85,8 @@ import { UsersGridComponent } from './member/registration/users/grid/users.grid.
     RenewComponent,
     DialogComponent,
     UsersComponent,
-    UsersGridComponent
+    UsersGridComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

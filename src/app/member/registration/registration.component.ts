@@ -3,7 +3,7 @@ import { CommonService } from '../../shared/common.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CoreService } from 'src/app/core/core.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MEMBER_ENDPOINT, MEMBER_REGISTRATION_ENDPOINT } from '../../constants';
+import { DATE_FORMAT, GENDER, MEMBER_ENDPOINT, MEMBER_REGISTRATION_ENDPOINT } from '../../constants';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BACKEND_SYS_ERROR } from '../../constants';
 import { Member } from '../member.model';
@@ -17,11 +17,16 @@ import { DatePipe } from '@angular/common';
 })
 export class RegistrationComponent implements OnInit {
 
+  matDateFormat = DATE_FORMAT;
+
   state: string[] = [
     'IN',
     'OH',
     'KY'
   ];
+
+  gen: string[] = GENDER;
+
   isSubmitting = false; // Initially, the button is not disabled
 
   apiResponse: string = '';
@@ -57,13 +62,14 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data){
-      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), 'yyyy-MM-dd')}`);
+      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), this.matDateFormat)}`);
     }
     this.memberForm.patchValue(this.data);
   }
 
   onFormSubmit() {
     if (this.memberForm.valid) {
+      alert('');
       this.isSubmitting=true;
       if (this.data) {
         this.commonService

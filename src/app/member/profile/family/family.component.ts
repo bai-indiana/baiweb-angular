@@ -4,7 +4,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { BACKEND_SYS_ERROR, FAMILY_ENDPOINT, RELATION_TYPES, STATE_LIST } from 'src/app/constants';
+import { BACKEND_SYS_ERROR, DATE_FORMAT, FAMILY_ENDPOINT, RELATION_TYPES, STATE_LIST } from 'src/app/constants';
 import { CoreService } from 'src/app/core/core.service';
 import { Member } from 'src/app/member/member.model';
 import { CommonService } from 'src/app/shared/common.service';
@@ -54,13 +54,14 @@ export class FamilyComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data){
-      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), 'yyyy-MM-dd')}`);
+      this.data.dob = new Date(`${this.datePipe.transform(new Date(this.data.dob), DATE_FORMAT)}`);
     }
     this.famForm.patchValue(this.data);
   }
  
   onFamFormSubmit() {
     if (this.famForm.valid) {
+      this.isSubmitting = true;
       if (this.data) {
         this.commonService
           .update(this.data.id, this.famForm.value,FAMILY_ENDPOINT)
@@ -86,14 +87,10 @@ export class FamilyComponent implements OnInit {
       }
     }
   }
- 
-
 
   onAlertClose() {
     this.hasError = false;
   }
-
- 
 
   handleError(method: string, err: HttpErrorResponse) {
     this.isSubmitting = false;
