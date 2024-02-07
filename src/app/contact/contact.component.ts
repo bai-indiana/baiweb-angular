@@ -18,12 +18,11 @@ export class ContactComponent implements OnInit {
     private commonService: CommonService) { }
   //Retrieve client system details
   ngOnInit(): void {
-    if(this.clientData){
+    if(!this.clientData){
       this.commonService.getClientSystemData().subscribe((data) => {
         this.clientData = data;
       });
     }
-
   }
 
   contact = { name: '', emailId: '', phone: '', message: '' };

@@ -39,7 +39,7 @@ export class LoginComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.loginForm = this.formBuilder.group({
-      username: ['sudip.b28@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      username: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       password: ['', Validators.required],
     });
 

@@ -9,7 +9,7 @@ import { Client } from '../shared/client.model';
   providedIn: 'root'
 })
 export class ContactService    {
-  private contactApiUrl = BASE_URL + '/contact/message';
+  private contactApiUrl = BASE_URL + '/api/contact/message';
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,6 @@ export class ContactService    {
       .set('emailId', email)
       .set('phone', phone)
       .set('message', message);
-      alert(JSON.stringify(client));
     return this.http.post(this.contactApiUrl, client, { params, responseType: "text" });
   }
 }
