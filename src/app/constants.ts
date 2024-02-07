@@ -11,7 +11,7 @@ export const MEMBERSHIP_ENDPOINT = 'api/ms'
 export const TEMP_PASS_ENDPOINT = 'api/auth/tempPassword'
 export const MEMBER_LOGIN_ENDPOINT = 'api/auth/login'
 export const MEMBER_LOGOUT_ENDPOINT = 'api/auth/logout'
-export const BACKEND_SYS_ERROR = 'If the issue persists, please contact support@baiweb.com'
+export const BACKEND_SYS_ERROR = 'If the issue persists, please contact admin@baiweb.com'
 export const DATE_FORMAT = 'yyyy-MM-dd'
 
 // ALL DROP-DOWN LIST
