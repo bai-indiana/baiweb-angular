@@ -152,9 +152,9 @@ textarea::-ms-input-placeholder { /* Microsoft Edge */
     }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1064px) {
     .parallax-window {
-        min-height: 600px;
+        min-height: 1064px;
     }
 }
 

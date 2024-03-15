@@ -38,7 +38,7 @@ import {MatCardModule} from '@angular/material/card';
 import { CommonService } from './shared/common.service';
 import { RegistrationService } from './member/registration/registration.service';
 import { MatNativeDateModule, DateAdapter } from '@angular/material/core';
-import { CustomDateAdapter } from './shared/customDateAdapter ';
+import { CustomDateAdapter } from './shared/customDateAdapter';
 import { LoginComponent } from './member/login/login.component';
 import { ProfileComponent } from './member/profile/profile.component';
 import { AlertComponent } from './shared/alert/alert.component';
@@ -56,6 +56,7 @@ import { DialogComponent } from './shared/dialog/dialog.component';
 import { UsersComponent } from './member/registration/users/users.component';
 import { UsersGridComponent } from './member/registration/users/grid/users.grid.component';
 import { DateFormatPipe } from './shared/date-format.pipe';
+import { LoadingComponent } from './shared/loading/loading.component';
  
 
 
@@ -86,7 +87,8 @@ import { DateFormatPipe } from './shared/date-format.pipe';
     DialogComponent,
     UsersComponent,
     UsersGridComponent,
-    DateFormatPipe
+    DateFormatPipe,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

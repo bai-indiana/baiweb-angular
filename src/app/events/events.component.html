@@ -3,34 +3,60 @@
         <div class="text-center mb-16">
             <h2 class="bg-white-sexy tm-text-brown py-6 px-12 text-4xl font-medium inline-block bg-opacity-90 rounded-md">Our Events</h2>
         </div>
-        <div class="flex flex-col lg:flex-row justify-around items-center">
-            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-brown bg-opacity-90 tm-item-container">
-                <div class="flex items-start mb-6 tm-menu-item">
-                    <img alt="Ma Durga" class="rounded-md" src="/assets/img/events1.png">
+        <div class="flex flex-col lg:flex-row justify-around items-center"  *ngIf="events">
+            <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-0 sm:py-10 bg-brown bg-opacity-90 tm-item-container">
+                <div class="flex items-start mb-6 tm-menu-item" *ngIf="events[0]">
+                    <img alt="{{ events[0].imgAlt }}" class="rounded-md" src="/assets/img/{{ events[0].img }}">
                     <div class="ml-3 sm:ml-6">
-                        <a href="https://rb.gy/owx05" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">Durga Puja</a>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Venue : HTCI Temple</div>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Date : Saturday, Oct 21st 2023</div>
-                        <div class="text-white text-md sm:text-lg-events font-light">Time : 6:30pm ~ 8:30pm</div>
+                        <a href="{{ events[0].mapLink }}" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">{{ events[0].name }}</a>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                           <div class="tm-text-yellow"> Venue : </div> 
+                           {{ events[0].venue }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow">Date : </div>
+                            {{ eventDateFormatter(events[0].eventDate) }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light">
+                            <div class="tm-text-yellow">Time : </div>
+                            {{ convertTo12HourFormat(events[0].startTime) }} ~ {{ convertTo12HourFormat(events[0].endTime) }}
+                        </div>
+                        <div class="text-white text-md sm:text-sm-events font-light">
+                            <div class="tm-text-yellow">Address : </div>
+                            {{ events[0].address }}
+                        </div>
                         <div class="mt-5">
                             <a class="inline-block tm-bg-gold transition text-white text-sm pt-2 pb-3 px-8 rounded-md" target="_blank" 
-                            href="https://rb.gy/owx05">
+                            href="{{events[0].mapLink}}">
                                 <i class="fas fa-map-marked-alt mr-3"></i>
                                 Open Map
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-start mb-6 tm-menu-item">
-                    <img alt="লক্ষ্মী পূজা" class="rounded-md" src="/assets/img/events2.png">
+                <div class="flex items-start mb-6 tm-menu-item" *ngIf="events[1]">
+                    <img alt="{{ events[1].imgAlt }}" class="rounded-md" src="/assets/img/{{ events[1].img }}">
                     <div class="ml-3 sm:ml-6">
-                        <a href="https://rb.gy/xd6rg" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">Lokkhi Puja</a>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Venue : HTCI Temple</div>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Date : Friday, Oct 27th 2023</div>
-                        <div class="text-white text-md sm:text-lg-events font-light">Time : 6:30pm ~ 8:00pm</div>
+                        <a href="{{ events[1].mapLink }}" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">{{ events[1].name }}</a>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Venue : </div>
+                            {{ events[1].venue }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Date : </div>
+                            {{ eventDateFormatter(events[1].eventDate) }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light">
+                            <div class="tm-text-yellow">  Time : </div>
+                            {{ convertTo12HourFormat(events[1].startTime) }} ~ {{ convertTo12HourFormat(events[1].endTime) }}
+                        </div>
+                        <div class="text-white text-md sm:text-sm-events font-light">
+                            <div class="tm-text-yellow"> Address : </div>
+                            {{ events[3].address }}
+                        </div>
                         <div class="mt-5">
                             <a class="inline-block tm-bg-gold transition text-white text-sm pt-2 pb-3 px-8 rounded-md" target="_blank" 
-                            href="https://rb.gy/xd6rg">
+                            href="{{events[1].mapLink}}">
                                 <i class="fas fa-map-marked-alt mr-3"></i>
                                 Open Map
                             </a>
@@ -39,34 +65,65 @@
                 </div>
             </div>
             <div class="flex-1 m-5 rounded-xl px-4 py-6 sm:px-8 sm:py-10 bg-brown bg-opacity-90 tm-item-container">
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
+                <div class="flex items-start justify-end mb-6 tm-menu-item-2" *ngIf="events[2]">
                     <div class="mr-6"> <!--text-right  = this class control text allignment, start from right-->
-                        <a  href="https://rb.gy/00jzw" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">Bijoya</a>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Venue : Billericay Park Building</div>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Date : Saturday, Dec 9th 2023</div>
-                        <div class="text-white text-md sm:text-lg-events font-light">Time : 6pm</div>
-                        <div class="text-white text-md sm:text-sm-events font-light">Address : 12690 Promise Road</div>
-                        <div class="text-white text-md sm:text-sm-events font-light">Fishers, IN 46038</div>
-                    </div> 
-                    <img alt="বিজয়া" class="rounded-md" src="/assets/img/events3.png">
-                </div>
-                <div class="flex items-start justify-end mb-6 tm-menu-item-2">
-                    <div class="mr-6"> <!--text-right  = this class control text allignment, start from right-->
-                        <a  href="https://rb.gy/8jfzla" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">Saraswati Puja</a>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Venue : Roy. G. Holland Memorial Park</div>
-                        <div class="text-white text-md sm:text-lg-events font-light mb-1">Date : Saturday, Feb 17th 2024</div>
-                        <div class="text-white text-md sm:text-lg-events font-light">Time : 10am</div>
-                        <div class="text-white text-md sm:text-sm-events font-light">Address : 12690 Promise Road</div>
-                        <div class="text-white text-md sm:text-sm-events font-light">Fishers, IN 46038</div>
+                        <a  href="{{events[2].mapLink}}" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">{{ events[2].name }}</a>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Venue : </div> 
+                            {{ events[2].venue }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Date : </div>
+                            {{ eventDateFormatter(events[2].eventDate) }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light">
+                            <div class="tm-text-yellow">  Time : </div>
+                            {{ convertTo12HourFormat(events[2].startTime) }} ~ {{ convertTo12HourFormat(events[2].endTime) }}
+                        </div>
+                        <div class="text-white text-md sm:text-sm-events font-light">
+                            <div class="tm-text-yellow"> Address : </div>
+                            {{ events[2].address }}
+                        </div>
+                        <!-- <div class="text-white text-md sm:text-sm-events font-light">Fishers, IN 46038</div> -->
                         <div class="mt-5">
                             <a class="inline-block tm-bg-gold transition text-white text-sm pt-2 pb-3 px-8 rounded-md" target="_blank" 
-                            href="https://rb.gy/8jfzla">
+                            href="{{events[2].mapLink}}">
                                 <i class="fas fa-map-marked-alt mr-2"></i>
                                 Open Map
                             </a>
                         </div> 
                     </div> 
-                    <img alt="সরস্বতী পূজা" class="rounded-md" src="/assets/img/saraswati_event_2024.png">
+                    <img alt="{{ events[2].imgAlt }}" class="rounded-md" src="/assets/img/{{ events[2].img }}">
+                </div>
+                <div class="flex items-start justify-end mb-6 tm-menu-item-2" *ngIf="events[3]">
+                    <div class="mr-6"> <!--text-right  = this class control text allignment, start from right-->
+                        <a  href="{{events[3].mapLink}}" target="_blank" class="text-lg sm:text-xl-events mb-2 sm:mb-3 tm-text-yellow">{{ events[3].name }}</a>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Venue : </div> 
+                            {{ events[3].venue }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light mb-1">
+                            <div class="tm-text-yellow"> Date : </div>
+                            {{ eventDateFormatter(events[3].eventDate) }}
+                        </div>
+                        <div class="text-white text-md sm:text-lg-events font-light">
+                            <div class="tm-text-yellow">  Time : </div>
+                            {{ convertTo12HourFormat(events[3].startTime) }} ~ {{ convertTo12HourFormat(events[3].endTime) }}
+                        </div>
+                        <div class="text-white text-md sm:text-sm-events font-light">
+                            <div class="tm-text-yellow"> Address : </div>
+                            {{ events[3].address }}
+                        </div>
+                        <!-- <div class="text-white text-md sm:text-sm-events font-light">Fishers, IN 46038</div> -->
+                        <div class="mt-5">
+                            <a class="inline-block tm-bg-gold transition text-white text-sm pt-2 pb-3 px-8 rounded-md" target="_blank" 
+                            href="{{events[3].mapLink}}">
+                                <i class="fas fa-map-marked-alt mr-2"></i>
+                                Open Map
+                            </a>
+                        </div> 
+                    </div> 
+                    <img alt="{{ events[3].imgAlt }}" class="rounded-md" src="/assets/img/{{ events[3].img }}">
                 </div>
                 <div class="mt-5 fa-pull-right">
                     <button id="shareButton" (click)="shareLink()" class="inline-block tm-bg-gold transition text-white text-sm pt-2 pb-3 px-8 rounded-md" target="_blank">

@@ -27,6 +27,7 @@ Create a shared header and footer component. </br>
 
 Create contact page form service  </br>
     ng generate service contact/contact </br>
+    ng generate service shared/loading/loading </br>
 
 Crerate model </br>
     ng generate class shared/client --type=model    
