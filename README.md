@@ -6,6 +6,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:5000/`. The application will automatically reload if you change any of the source files.
 
+## Deploy in github
+
+Run 'ng build --output-path docs --base-href /baiweb-angular' this will deploy whole app in docs dir. Push docs into github then see the changes in 
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
@@ -27,6 +31,7 @@ Create a shared header and footer component. </br>
 
 Create contact page form service  </br>
     ng generate service contact/contact </br>
+    ng generate service shared/loading/loading </br>
 
 Crerate model </br>
     ng generate class shared/client --type=model    

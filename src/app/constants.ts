@@ -8,11 +8,13 @@ export const MEMBER_REGISTRATION_ENDPOINT = 'api/auth/register'
 export const MEMBERSHIP_REGISTRATION_ENDPOINT = 'api/mr/reg'
 export const FAMILY_ENDPOINT = 'api/fam'
 export const MEMBERSHIP_ENDPOINT = 'api/ms'
+export const PUBLIC_ENDPOINT = '/api/pub'
 export const TEMP_PASS_ENDPOINT = 'api/auth/tempPassword'
 export const MEMBER_LOGIN_ENDPOINT = 'api/auth/login'
 export const MEMBER_LOGOUT_ENDPOINT = 'api/auth/logout'
 export const BACKEND_SYS_ERROR = 'If the issue persists, please contact admin@baiweb.com'
 export const DATE_FORMAT = 'yyyy-MM-dd'
+export const GET_LATEST_EVENTS = PUBLIC_ENDPOINT + '/event/latest-events'
 
 // ALL DROP-DOWN LIST
 export const STATE_LIST: string[] = [
