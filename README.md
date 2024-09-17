@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:5000/`. The appli
 
 ## Deploy in github
 
-Run 'ng build --output-path docs --base-href /baiweb-angular' this will deploy whole app in docs dir. Push docs into github then see the changes in 
+Run 'ng build --output-path docs --base-href baiweb-angular/' this will deploy whole app in docs dir. Push docs into github then see the changes in 
 
 ## Code scaffolding
 
