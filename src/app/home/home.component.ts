@@ -18,12 +18,12 @@ export class HomeComponent implements OnInit {
     this.loadingService.show();
     // Perform data fetching logic
     // After data is fetched, hide loading screen
-    alert('show');
+    //alert('show');
     setTimeout(() => {
       // Code to execute after the delay (e.g., 3 seconds)
       console.log('Delayed initialization');
     }, 10000); // 3000 milliseconds = 10 seconds
-    alert('hide');
+    //alert('hide');
     this.loadingService.hide();
 }  
 }
